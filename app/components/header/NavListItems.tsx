@@ -1,15 +1,15 @@
 import React from 'react'
+import { NavItems } from '@/app/data/NavListData';
+import styles from '../../page.module.css';
 
 interface NavListItemsProps {
-    name: string;
+  nav: NavItems;
 }
 
-function NavListItems({ name }: NavListItemsProps) {
+export function NavListItems({ nav }: NavListItemsProps) {
   return (
-    <li>
-        <a href="#">{name}</a>
+    <li className={styles.nav}>
+      <a href={nav.link} className={styles['nav-link']}>{nav.name}</a>
     </li>
   )
 }
-
-export default NavListItems
