@@ -1,16 +1,24 @@
+import React from "react";
+import styles from './page.module.css';
+
 type Movie = {
+  results: Array<response>;
+};
+
+interface response {
   id: string;
   title: string;
   backdrop_path: string;
-};
+}
 
-async function getMovies(): Promise<Movie[]> {
-
+async function getMovies(): Promise<Movie> {
   const url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzN2ZiZTYyNGNhODExOWIxNzAxZTUyMGEwOWQ5ZjM2MSIsIm5iZiI6MTczNzk1MTQzOC4wOTIsInN1YiI6IjY3OTcwOGNlMGUxZTA0ODZkNjJiMmU1YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WMOdLcTEtcLaeYQ2bbyaAm88sCVzJsAlSERPUF87C7U",
     },
   };
 
@@ -20,45 +28,25 @@ async function getMovies(): Promise<Movie[]> {
     throw new Error("Failed to fetch movies");
   }
 
-  const data = await res.json();
-  return data.results.map((movie: any) => ({
-    id: movie.id,
-    title: movie.title,
-    backdrop_path: movie.backdrop_path,
-  }));
+  return (await res.json()) as Movie;
 }
 
-import React, { useEffect, useState } from "react";
-
-const MovieBanners: React.FC = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getMovies()
-      .then((movies) => setMovies(movies))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+export default async function Banner() {
+  const posts = await getMovies();
+  console.log(posts);
 
   return (
-    <div style={{ display: "flex", overflowX: "scroll", gap: "1rem" }}>
-      {movies.map((movie) => (
-        <div key={movie.id} style={{ minWidth: "300px" }}>
+    <div className={styles.banner}>
+      <div className={styles.movie}>
+        {posts.results.map((movie: response) => (
           <img
+            key={movie.id}
             src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
             alt={movie.title}
-            style={{ width: "100%", borderRadius: "8px" }}
+            className={styles.bgImg}
           />
-          <h3 style={{ textAlign: "center" }}>{movie.title}</h3>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
-};
-
-export default MovieBanners;
+}
