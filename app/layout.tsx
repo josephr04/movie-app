@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "./Header"
+import Banner from "./banner"
 import { Geist, Geist_Mono } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./globals.css";
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Header/>
+        <Banner/>
         {children}
       </body>
     </html>
