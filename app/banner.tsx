@@ -38,14 +38,12 @@ export default async function Banner() {
   return (
     <div className={styles.banner}>
       <div className={styles.movie}>
-        {posts.results.map((movie: response) => (
           <img
-            key={movie.id}
-            src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
-            alt={movie.title}
+            key={posts.results[0].id}
+            src={`https://image.tmdb.org/t/p/w500${posts.results[0].backdrop_path}`}
+            alt={posts.results[0].title}
             className={styles.bgImg}
           />
-        ))}
       </div>
     </div>
   );
