@@ -33,15 +33,14 @@ async function getMovies(): Promise<Movie> {
 
 export default async function Banner() {
   const posts = await getMovies();
-  console.log(posts);
-
+  const movieId = 1;
   return (
     <div className={styles.banner}>
       <div className={styles.movie}>
           <img
-            key={posts.results[0].id}
-            src={`https://image.tmdb.org/t/p/w500${posts.results[0].backdrop_path}`}
-            alt={posts.results[0].title}
+            key={posts.results[movieId].id}
+            src={`https://image.tmdb.org/t/p/original${posts.results[movieId].backdrop_path}`}
+            alt={posts.results[movieId].title}
             className={styles.bgImg}
           />
       </div>
