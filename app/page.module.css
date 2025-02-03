@@ -6,7 +6,7 @@
     height: var(--cx-header-height);
     display: flex;
     align-items: center;
-    padding: 10px 100px;
+    padding: 12px 100px;
     transition: 0.5s;
     z-index: 10000;
 }
@@ -88,21 +88,29 @@
     padding-bottom: 100px;
 }
 
-.bgImg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    font-size: 8rem;
-    visibility: visible;
-    opacity: 1;
-    transition: 1s;
+.errorMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; 
 }
 
-.bgImg.active {
-    visibility: visible;
-    opacity: 1;
+.carouselButton {
+    width: 5% !important;
+}
+
+.carouselIndicators {
+    right: auto !important;
+    bottom: 10% !important;
+    margin-left: 5% !important;
+}
+
+.movieInfo {
+    width: 30% !important;
+    min-width: 200px !important;
+    text-align: left !important;
+    margin-right: 200px !important;
+    bottom: 15% !important;
+    left: 5% !important;
 }

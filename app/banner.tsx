@@ -1,6 +1,5 @@
 import React from "react";
 import styles from './page.module.css';
-import "bootstrap/dist/css/bootstrap.min.css";
 
 type Movie = {
   results: Array<response>;
@@ -10,6 +9,7 @@ interface response {
   id: string;
   title: string;
   backdrop_path: string;
+  overview: string;
 }
 
 async function getMovies(): Promise<Movie> {
@@ -19,7 +19,7 @@ async function getMovies(): Promise<Movie> {
     headers: {
       accept: "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzN2ZiZTYyNGNhODExOWIxNzAxZTUyMGEwOWQ5ZjM2MSIsIm5iZiI6MTczNzk1MTQzOC4wOTIsInN1YiI6IjY3OTcwOGNlMGUxZTA0ODZkNjJiMmU1YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WMOdLcTEtcLaeYQ2bbyaAm88sCVzJsAlSERPUF87C7U",
+        `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     },
   };
 
@@ -33,57 +33,48 @@ async function getMovies(): Promise<Movie> {
 }
 
 export default async function Banner() {
-  const posts = await getMovies();
-  const movieId = 1;
+  let posts = null;
+
+  try {
+    posts = await getMovies();
+  } catch (error) {
+    console.log(error);
+  }
+
+  if (!posts) {
+    return <div className={styles.errorMessage}>Error loading movies... Please try again later.</div>;
+  }
+
   return (
     <div className={styles.banner}>
       <div className={styles.movie}>
-          <img
-            key={posts.results[movieId].id}
-            src={`https://image.tmdb.org/t/p/original${posts.results[movieId].backdrop_path}`}
-            alt={posts.results[movieId].title}
-            className={styles.bgImg}
-          />
-          <div className={styles.MovieContent}>
-          <div id="carouselExampleDark" className="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div className="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div className="carousel-inner">
-              <div className="carousel-item active" data-bs-interval="10000">
-                <img src="..." className="d-block w-100" alt="..."/>
-                <div className="carousel-caption d-none d-md-block">
-                  <h5>First slide label</h5>
-                  <p>Some representative placeholder content for the first slide.</p>
-                </div>
-              </div>
-              <div className="carousel-item" data-bs-interval="2000">
-                <img src="..." className="d-block w-100" alt="..."/>
-                <div className="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>Some representative placeholder content for the second slide.</p>
-                </div>
-              </div>
-              <div className="carousel-item">
-                <img src="..." className="d-block w-100" alt="..."/>
-                <div className="carousel-caption d-none d-md-block">
-                  <h5>Third slide label</h5>
-                  <p>Some representative placeholder content for the third slide.</p>
-                </div>
-              </div>
-            </div>
-            <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-            </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-              <span className="carousel-control-next-icon" aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-            </button>
+        <div id="movieCarousel" className="carousel slide" data-bs-ride="carousel">
+          <div className={`carousel-indicators ${styles.carouselIndicators}`}>
+            {posts.results.slice(0, 6).map((_, index) => (
+              <button key={index} type="button" data-bs-target="#movieCarousel" data-bs-slide-to={index} className={index === 0 ? "active" : ""} aria-current="true" aria-label={`Slide ${index + 1}`}></button>
+            ))}
           </div>
+          <div className="carousel-inner">
+            {posts.results.slice(0, 6).map((movie, index) => (
+              <div key={movie.id} className={`carousel-item ${index === 0 ? "active" : ""}`} data-bs-interval={index === 0 ? 10000 : 2000}>
+                <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="d-block w-100" alt={movie.title} />
+                <div className={`carousel-caption d-none d-md-block ${styles.movieInfo}`}>
+                  <h5>{movie.title}</h5>
+                  <p>{movie.overview}</p>
+                  <button type="button" className="btn btn-warning">Watch more</button>
+                </div>
+              </div>
+            ))}
           </div>
+          <button className={`carousel-control-prev ${styles.carouselButton}`} type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className={`carousel-control-next ${styles.carouselButton}`} type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
     </div>
   );
