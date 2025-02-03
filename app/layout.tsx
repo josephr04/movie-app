@@ -1,8 +1,10 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
-import Header from "./Header"
-import Banner from "./banner"
 import { Geist, Geist_Mono } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.css';
+import Header from "./Header"
+import Banner from "./banner"
+import BootstrapClient from "./components/BootstrapClient";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -29,8 +31,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Header/>
-        <Banner/>
+        <Suspense 
+          fallback={
+            <div className={`d-flex justify-content-center align-items-center`} style={{ height: '100vh' }}>
+              <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          }
+        >
+          <Banner/>
+        </Suspense>
         {children}
+        <BootstrapClient />
       </body>
     </html>
   );
