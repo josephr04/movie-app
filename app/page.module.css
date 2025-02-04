@@ -60,16 +60,10 @@
     min-height: 100vh;
     padding: 0 100px;
     overflow: hidden;
-    transition: 0.5s;
 }
 
-.banner:after {
+.imgOverlay {
     position: absolute;
-    content: '';
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
@@ -80,7 +74,6 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -102,7 +95,7 @@
 
 .carouselIndicators {
     right: auto !important;
-    bottom: 10% !important;
+    bottom: 20% !important;
     margin-left: 5% !important;
 }
 
@@ -111,6 +104,31 @@
     min-width: 200px !important;
     text-align: left !important;
     margin-right: 200px !important;
-    bottom: 15% !important;
+    bottom: 25% !important;
     left: 5% !important;
+}
+
+.movieInfo p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 6em;
+    line-clamp: 4; 
+    box-orient: vertical;
+}
+
+.movieGenres {
+    color: rgb(160, 160, 160);
+    font-size: 15px;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: clip;
+    max-height: 1em;
+    line-clamp: 1; 
+    box-orient: vertical;
 }
