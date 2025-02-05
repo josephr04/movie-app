@@ -81,6 +81,23 @@
     padding-bottom: 100px;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+  
+.banner {
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: forwards;
+}
+  
+
 .errorMessage {
     display: flex;
     justify-content: center;
@@ -97,6 +114,20 @@
     right: auto !important;
     bottom: 20% !important;
     margin-left: 5% !important;
+}
+
+.carouselIndicators button {
+    width: 30px !important;
+    transition: width .3s ease !important;
+    height: 8px !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    border-radius: .25rem;
+}
+
+:global(.carousel-indicators button.active) {
+    width: 50px !important;
+    transition: width .3s ease;
 }
 
 .movieInfo {
