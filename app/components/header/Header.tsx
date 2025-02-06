@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavListItems } from './components/header/NavListItems';
-import { navListData } from './data/NavListData';
+import { NavListItems } from './NavListItems';
+import { navListData } from '../../data/NavListData';
 import { Search } from 'lucide-react';
-import styles from './page.module.css';
+import styles from '../../page.module.css';
 
 function Header() {
   return (
