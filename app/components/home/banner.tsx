@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './page.module.css';
+import styles from '../../page.module.css';
 
 type Movie = {
   results: Array<response>;
@@ -57,7 +57,7 @@ async function getGenres(): Promise<Genre[]> {
   return (await res.json()).genres as Genre[];
 }
 
-export default async function Banner() {
+export async function Banner() {
   let posts = null;
   let genres: Genre[] = [];
 
