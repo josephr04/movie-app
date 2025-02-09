@@ -75,10 +75,10 @@ export async function Banner() {
 
   return (
     <div className={styles.banner}>
-      <div id="movieCarousel" className="carousel slide" data-bs-ride="carousel">
+      <div id="BannerCarousel" className="carousel slide" data-bs-ride="carousel">
         <div className={`carousel-indicators ${styles.carouselIndicators}`}>
           {posts.results.slice(0, 6).map((_, index) => (
-            <button key={index} type="button" data-bs-target="#movieCarousel" data-bs-slide-to={index} className={index === 0 ? "active" : ""} aria-current="true" aria-label={`Slide ${index + 1}`}></button>
+            <button key={index} type="button" data-bs-target="#BannerCarousel" data-bs-slide-to={index} className={index === 0 ? "active" : ""} aria-current="true" aria-label={`Slide ${index + 1}`}></button>
           ))}
         </div>
         <div className="carousel-inner">
@@ -95,11 +95,11 @@ export async function Banner() {
             </div>
           ))}
         </div>
-        <button className={`carousel-control-prev ${styles.carouselButton}`} type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+        <button className={`carousel-control-prev ${styles.carouselButton}`} type="button" data-bs-target="#BannerCarousel" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Previous</span>
         </button>
-        <button className={`carousel-control-next ${styles.carouselButton}`} type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+        <button className={`carousel-control-next ${styles.carouselButton}`} type="button" data-bs-target="#BannerCarousel" data-bs-slide="next">
           <span className="carousel-control-next-icon" aria-hidden="true"></span>
           <span className="visually-hidden">Next</span>
         </button>
