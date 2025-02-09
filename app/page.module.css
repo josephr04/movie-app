@@ -54,11 +54,12 @@
     height: 100%;
 }
 
+/* Banner Styles */
+
 .banner {
     position: relative;
     width: 100%;
-    min-height: 100vh;
-    padding: 0 100px;
+    min-height: 85vh;
     overflow: hidden;
 }
 
@@ -81,6 +82,8 @@
     padding-bottom: 100px;
 }
 
+/* Banner fade-in animation */
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -97,7 +100,7 @@
     animation-fill-mode: forwards;
 }
   
-
+/* Error message Style */
 .errorMessage {
     display: flex;
     justify-content: center;
@@ -162,4 +165,106 @@
     max-height: 1em;
     line-clamp: 1; 
     box-orient: vertical;
+}
+
+/* Card section styles */
+
+.cardSection {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.cardSectionTitle {
+    align-items: flex-start;
+    display: flex;
+    padding: 20px 40px;
+}
+
+.cardSectionTitle h2 {
+    font-weight: 600;
+    font-size: 1.75rem;
+}
+
+.movieCarouselButton {
+    width: 3% !important;
+    margin-bottom: 3rem;
+}
+
+/* Movie card styles */
+
+.movieCard {
+    position: relative;
+    width: 250px;
+    min-width: 150px;
+    transition: all 0.3s ease;
+}
+  
+.movieBanner {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background-color: white;
+}
+
+.movieBanner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+  
+.movieTitle {
+    height: 35px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: normal;
+    color: white;
+}
+
+.movieOverlay {
+    position: absolute;
+    height: 100%;
+    background-color: rgba(22, 22, 22, 0.9);
+    opacity: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding: 10px 15px;
+    transition: opacity 0.3s ease;
+    visibility: hidden;
+    cursor: pointer;
+    border-bottom: 2px solid white
+}
+
+.movieCard:hover .movieOverlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.movieDescription {
+    font-size: 14px;
+    font-weight: normal;
+    color: white;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 10em;
+    line-clamp: 6; 
+    box-orient: vertical;
+}
+
+.movieRating {
+    display: flex;
+}
+
+.movieRating > * {
+    margin-right: 5px;
+}
+
+.movieRating p {
+    font-size: 14px;
+    font-weight: normal;
+    color: white;
 }
