@@ -7,7 +7,6 @@ import styles from './page.module.css';
 export default function Home() {
   return (
     <div>
-      <main>
       <Suspense fallback={<Loading />}>
         <Banner/>
       </Suspense>
@@ -17,9 +16,6 @@ export default function Home() {
         <CardCarousel title="Top Rated" category="top_rated"/>
         <CardCarousel title="Upcoming" category="upcoming"/>
       </div>
-      </main>
-      <footer>
-      </footer>
     </div>
   );
 }
