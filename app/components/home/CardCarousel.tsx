@@ -1,5 +1,6 @@
 import React from "react";
 import { Star } from 'lucide-react';
+import { AnimateOnScroll } from "../AnimateOnScroll";  // Import the client component
 import styles from '../../page.module.css';
 
 interface CardCarouselProps {
@@ -54,7 +55,7 @@ export async function CardCarousel({ title, category }: CardCarouselProps) {
     return <div className={styles.errorMessage}>Error loading movies... Please try again later.</div>;
   }
 
-  // This fucntion splits the movies into chunks for better rendering
+  // This function splits the movies into chunks for better rendering
   const chunkMovies = (arr: Array<response>, chunkSize: number) => {
     const result = [];
     for (let i = 0; i < arr.length; i += chunkSize) {
@@ -70,47 +71,49 @@ export async function CardCarousel({ title, category }: CardCarouselProps) {
       <div className={styles.cardSectionTitle}>
         <h2>{title}</h2>
       </div>
-      <div className={styles.MovieCarousel}>
-        <div id={`${category}`} className="carousel slide" data-bs-ride="false" data-bs-interval="false">
-          <div className="carousel-inner">
-            {movieChunks.map((chunk, chunkIndex) => (
-              <div key={chunkIndex} className={`carousel-item ${chunkIndex === 0 ? "active" : ""}`}>
-                <div className="d-flex justify-content-center">
-                  {chunk.map((movie, index) => (
-                    <div key={index} className={`text-center mx-3 ${styles.movieCard}`}>
-                      <a className={styles.movieOverlay}>
-                        <p className={styles.movieTitle}>{movie.title}</p>
-                        <div className={styles.movieRating}>
-                          <p className={styles.voteAverage}>{parseFloat(movie.vote_average).toFixed(1)}</p>
-                          <Star size={17} />
-                          <p>({movie.vote_count})</p>
+      <AnimateOnScroll>
+        <div className={styles.MovieCarousel}>
+          <div id={`${category}`} className="carousel slide" data-bs-ride="false" data-bs-interval="false">
+            <div className="carousel-inner">
+              {movieChunks.map((chunk, chunkIndex) => (
+                <div key={chunkIndex} className={`carousel-item ${chunkIndex === 0 ? "active" : ""}`}>
+                  <div className="d-flex justify-content-center">
+                    {chunk.map((movie, index) => (
+                      <div key={index} className={`text-center mx-3 ${styles.movieCard}`}>
+                        <a className={styles.movieOverlay}>
+                          <p className={styles.movieTitle}>{movie.title}</p>
+                          <div className={styles.movieRating}>
+                            <p className={styles.voteAverage}>{parseFloat(movie.vote_average).toFixed(1)}</p>
+                            <Star size={17} />
+                            <p>({movie.vote_count})</p>
+                          </div>
+                          <p className={styles.movieDescription}>{movie.overview}</p>
+                        </a>
+                        <div className={styles.movieBanner}>
+                          <img 
+                            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
+                            className="d-block w-100" 
+                            alt={movie.title} 
+                          />
                         </div>
-                        <p className={styles.movieDescription}>{movie.overview}</p>
-                      </a>
-                      <div className={styles.movieBanner}>
-                        <img 
-                          src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
-                          className="d-block w-100" 
-                          alt={movie.title} 
-                        />
+                        <p className={styles.movieTitle}>{movie.title}</p>
                       </div>
-                      <p className={styles.movieTitle}>{movie.title}</p>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <button className={`carousel-control-prev ${styles.movieCarouselButton}`} type="button" data-bs-target={`#${category}`} data-bs-slide="prev">
+              <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Previous</span>
+            </button>
+            <button className={`carousel-control-next ${styles.movieCarouselButton}`} type="button" data-bs-target={`#${category}`} data-bs-slide="next">
+              <span className="carousel-control-next-icon" aria-hidden="true"></span>
+              <span className="visually-hidden">Next</span>
+            </button>
           </div>
-          <button className={`carousel-control-prev ${styles.movieCarouselButton}`} type="button" data-bs-target={`#${category}`} data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className={`carousel-control-next ${styles.movieCarouselButton}`} type="button" data-bs-target={`#${category}`} data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
         </div>
-      </div>
+      </AnimateOnScroll>
     </div>
   );
 }
