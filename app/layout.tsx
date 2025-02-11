@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import BootstrapClient from "./components/BootstrapClient";
 import Header from "./components/header/Header";
 import { Footer } from "./components/Footer";
+import { BackToTop } from "./components/BackToTop";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Header />
         <main>{children}</main>
+        <BackToTop />
         <Footer />
         <BootstrapClient />
       </body>
