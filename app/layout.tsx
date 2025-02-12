@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import BootstrapClient from "./components/BootstrapClient";
 import Header from "./components/header/Header";
 import { Footer } from "./components/Footer";
 import { BackToTop } from "./components/BackToTop";
+import { Loading } from "./components/Loading";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,9 +33,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Header />
-        <main>{children}</main>
-        <BackToTop />
-        <Footer />
+        <Suspense fallback={<Loading />}>
+          <main>{children}</main>
+          <BackToTop />
+          <Footer />
+        </Suspense>
         <BootstrapClient />
       </body>
     </html>
