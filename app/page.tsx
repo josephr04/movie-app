@@ -1,15 +1,11 @@
-import { Suspense } from "react";
 import { Banner } from "./components/home/banner";
-import { Loading } from "./components/Loading";
 import { CardCarousel } from "./components/home/CardCarousel"
 import styles from './page.module.css';
 
 export default function Home() {
   return (
     <div>
-      <Suspense fallback={<Loading />}>
-        <Banner/>
-      </Suspense>
+      <Banner/>
       <div className={styles.cardSection}>
         <CardCarousel title="Now Playing" category="now_playing"/>
         <CardCarousel title="Popular" category="popular"/>
