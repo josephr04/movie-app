@@ -98,6 +98,18 @@
     animation: fadeInUp 0.8s ease-out;
     animation-fill-mode: forwards;
 }
+
+/* Loading component Styles */
+.loading {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+}
   
 /* Error message Style */
 .errorMessage {
