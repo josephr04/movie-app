@@ -8,19 +8,19 @@ export interface NavItems {
 export const navListData: NavItems[] = [
     {
         id: 1,
-        link: '#upcoming',
+        link: '/upcoming',
         name: 'Upcoming',
         active: true,
     },
     {
         id: 2,
-        link: '#popular',
+        link: '/popular',
         name: 'Popular',
         active: true,
     },
     {
         id: 3,
-        link: '#categories',
+        link: '/categories',
         name: 'Categories',
         active: true,
     },
