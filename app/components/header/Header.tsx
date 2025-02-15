@@ -7,7 +7,9 @@ import styles from '../../page.module.css';
 function Header() {
   return (
     <header className={styles.header}>
-      <h1 className={styles.logo}>Movies+</h1>
+      <a href="/">
+        <h1 className={styles.logo}>Movies+</h1>
+      </a>
       <ul className={styles.nav}>
         {
           navListData.map(nav => (
