@@ -353,4 +353,23 @@
 .backToTop:hover {
     opacity: 1;
 }
-  
+
+.categoriesContainer {
+    width: 100%;
+    padding: 20px 30px;
+    justify-items: center;
+}
+
+.categoryList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+}
+
+.categoryCard {
+    width: 250px;
+    min-width: 150px;
+    text-align: center;
+    background-color: white;
+    color: black;
+}
