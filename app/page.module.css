@@ -367,9 +367,15 @@
 }
 
 .categoryCard {
+    cursor: pointer;
     width: 250px;
     min-width: 150px;
     text-align: center;
     background-color: white;
     color: black;
+    transition: transform 0.3s ease-in-out;
+}
+
+.categoryCard:hover {
+    transform: scale(1.1);
 }
