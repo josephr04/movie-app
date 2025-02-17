@@ -7,6 +7,7 @@ import Header from "./components/header/Header";
 import { Footer } from "./components/Footer";
 import { BackToTop } from "./components/BackToTop";
 import { Loading } from "./components/Loading";
+import { PrimeReactProvider } from "primereact/api";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -32,12 +33,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Header />
-        <Suspense fallback={<Loading />}>
-          <main>{children}</main>
-          <BackToTop />
-          <Footer />
-        </Suspense>
+        <PrimeReactProvider value={{ ripple: true }}>
+          <Header />
+          <Suspense fallback={<Loading />}>
+            <main>{children}</main>
+            <BackToTop />
+            <Footer />
+          </Suspense>
+        </PrimeReactProvider>
         <BootstrapClient />
       </body>
     </html>
