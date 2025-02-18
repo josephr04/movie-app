@@ -2,7 +2,7 @@ import React from 'react';
 import { NavListItems } from './NavListItems';
 import { navListData } from '../../data/NavListData';
 import { Search } from 'lucide-react';
-import { DynamicHeader } from "../AnimateOnScroll";
+import { DynamicHeader } from "../Animations";
 import styles from '../../page.module.css';
 
 function Header() {

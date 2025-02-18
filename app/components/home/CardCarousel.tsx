@@ -1,6 +1,6 @@
 import React from "react";
 import { Star } from 'lucide-react';
-import { AnimateOnScroll } from "../AnimateOnScroll";  // Import the client component
+import { FadeInOnScroll } from "../Animations";  // Import the client component
 import styles from '../../page.module.css';
 
 interface CardCarouselProps {
@@ -71,7 +71,7 @@ export async function CardCarousel({ title, category }: CardCarouselProps) {
       <div className={styles.cardSectionTitle}>
         <h2>{title}</h2>
       </div>
-      <AnimateOnScroll>
+      <FadeInOnScroll>
         <div className={styles.MovieCarousel}>
           <div id={`${category}`} className="carousel slide" data-bs-ride="false" data-bs-interval="false">
             <div className="carousel-inner">
@@ -113,7 +113,7 @@ export async function CardCarousel({ title, category }: CardCarouselProps) {
             </button>
           </div>
         </div>
-      </AnimateOnScroll>
+      </FadeInOnScroll>
     </div>
   );
 }
