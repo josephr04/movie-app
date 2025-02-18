@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./../page.module.css";
 
 interface AnimateOnScrollProps {
@@ -38,5 +38,29 @@ export const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children }) =>
     <div ref={fadeInRef} className={styles.fadeIn}>
       {children}
     </div>
+  );
+};
+
+
+interface DynamicHeaderProps {
+  children: React.ReactNode;
+}
+
+export const DynamicHeader: React.FC<DynamicHeaderProps> = ({ children }) => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : styles.headerTransparent}`}>
+      {children}
+    </header>
   );
 };
