@@ -360,7 +360,7 @@
     width: 100%;
     padding: 20px 30px;
     justify-items: center;
-    margin-top: 40px;
+    margin: 2rem 0;
 }
 
 .categoriesContainer h2 {
@@ -372,6 +372,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
+}
+
+.categoryList {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: forwards;
 }
 
 /* Categories cards style */
