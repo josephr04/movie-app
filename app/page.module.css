@@ -3,16 +3,21 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: var(--cx-header-height);
+    height: 60px;
     display: flex;
     align-items: center;
     padding: 12px 100px;
     transition: 0.5s;
     z-index: 10000;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.header.scrolled {
-    background-color: #23252b;
+.headerTransparent {
+    background-color: transparent;
+}
+
+.headerScrolled {
+    background-color: rgb(30, 31, 36);
 }
 
 .logo {
@@ -51,7 +56,6 @@
 .search {
     margin-left: auto;
     width: 30px;
-    height: 100%;
 }
 
 /* Banner Styles */

@@ -2,11 +2,12 @@ import React from 'react';
 import { NavListItems } from './NavListItems';
 import { navListData } from '../../data/NavListData';
 import { Search } from 'lucide-react';
+import { DynamicHeader } from "../AnimateOnScroll";
 import styles from '../../page.module.css';
 
 function Header() {
   return (
-    <header className={styles.header}>
+    <DynamicHeader>
       <a href="/">
         <h1 className={styles.logo}>Movies+</h1>
       </a>
@@ -20,7 +21,7 @@ function Header() {
       <a href="" className={styles.search}>
         <Search />
       </a>
-    </header>
+    </DynamicHeader>
   )
 }
 
