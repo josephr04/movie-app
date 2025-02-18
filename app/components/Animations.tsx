@@ -3,44 +3,36 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./../page.module.css";
 
-interface AnimateOnScrollProps {
+interface FadeInOnScrollProps {
   children: React.ReactNode;
 }
 
-export const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children }) => {
-  const fadeInRef = useRef<HTMLDivElement | null>(null);
-
-  const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        if (!entry.target.classList.contains(styles.fadeInVisible)) {
-          entry.target.classList.add(styles.fadeInVisible);
-        }
-      }
-    });
-  };
+export const FadeInOnScroll: React.FC<FadeInOnScrollProps> = ({ children }) => {
+  const elementRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.05,
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.fadeInVisible);
+          }
+        });
+      },
+      { threshold: 0.05 }
+    );
 
-    if (fadeInRef.current) {
-      observer.observe(fadeInRef.current);
-    }
+    if (elementRef.current) observer.observe(elementRef.current);
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div ref={fadeInRef} className={styles.fadeIn}>
+    <div ref={elementRef} className={styles.fadeIn}>
       {children}
     </div>
   );
 };
-
 
 interface DynamicHeaderProps {
   children: React.ReactNode;
