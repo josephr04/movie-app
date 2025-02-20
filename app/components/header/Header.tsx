@@ -18,7 +18,7 @@ function Header() {
           ))
         }
       </ul>
-      <a href="" className={styles.search}>
+      <a href="/search" className={styles.search}>
         <Search />
       </a>
     </DynamicHeader>
