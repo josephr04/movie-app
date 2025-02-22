@@ -82,7 +82,7 @@ export default async function page() {
       <h2>Categories</h2>
       <div className={styles.categoryList}>
         {genres.map((genre) => (
-          <a key={genre.id} href={`/categories/${genre.name.toLowerCase()}`}>
+          <a key={genre.id} href={`/categories/${genre.id}`}>
             <div className={`${styles.categoryCard} p-ripple`}>
               <div className={styles.categoryImgOverlay}></div>  
               <img 
