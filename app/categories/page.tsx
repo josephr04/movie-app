@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from '../page.module.css';
+import Link from 'next/link'
+import slugify from "slugify";
 import { Ripple } from 'primereact/ripple';
 
 type Genre = {
@@ -79,10 +81,12 @@ export default async function page() {
 
   return (
     <div className={styles.categoriesContainer}>
-      <h2>Categories</h2>
+      <h1>Categories</h1>
       <div className={styles.categoryList}>
-        {genres.map((genre) => (
-          <a key={genre.id} href={`/categories/${genre.id}`}>
+      {genres.map((genre) => {
+        const slug = slugify(genre.name, { lower: true });
+        return (
+          <Link key={genre.id} href={`/categories/${slug}`}>
             <div className={`${styles.categoryCard} p-ripple`}>
               <div className={styles.categoryImgOverlay}></div>  
               <img 
@@ -93,8 +97,9 @@ export default async function page() {
               <h3>{genre.name}</h3>
               <Ripple />
             </div>
-          </a>
-        ))}
+          </Link>
+        );
+      })}
       </div>
     </div>
   );
