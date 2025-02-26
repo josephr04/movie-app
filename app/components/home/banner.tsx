@@ -18,6 +18,10 @@ interface response {
   genre_ids: number[];
 }
 
+interface BannerProps {
+  genreId?: number;
+}
+
 async function getMovies(): Promise<Movie> {
   const url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
   const options = {
@@ -26,6 +30,25 @@ async function getMovies(): Promise<Movie> {
       accept: "application/json",
       Authorization:
         `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
+    },
+  };
+
+  const res = await fetch(url, options);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movies");
+  }
+
+  return (await res.json()) as Movie;
+}
+
+async function getMoviesByGenre(genreId: number): Promise<Movie> {
+  const url = `https://api.themoviedb.org/3/discover/movie?with_genres=${genreId}&language=en-US&page=1`;
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     },
   };
 
@@ -57,12 +80,16 @@ async function getGenres(): Promise<Genre[]> {
   return (await res.json()).genres as Genre[];
 }
 
-export async function Banner() {
+export async function Banner({ genreId } : BannerProps) {
   let posts = null;
   let genres: Genre[] = [];
 
   try {
-    [posts, genres] = await Promise.all([getMovies(), getGenres()]);
+    if (genreId !== undefined) {
+      [posts, genres] = await Promise.all([getMoviesByGenre(genreId), getGenres()]);
+    } else {
+      [posts, genres] = await Promise.all([getMovies(), getGenres()]);
+    }
   } catch (error) {
     console.log(error);
   }
