@@ -4,7 +4,7 @@ import { FadeInOnScroll } from "../Animations";  // Import the client component
 import styles from '../../page.module.css';
 
 interface CardCarouselProps {
-  title: string;
+  title: React.ReactNode;
   category: string;
   genreId?: number;
 }
@@ -105,7 +105,7 @@ export async function CardCarousel({ title, category, genreId }: CardCarouselPro
                     {chunk.map((movie, index) => (
                       <div key={index} className={`text-center mx-3 ${styles.movieCard}`}>
                         <a className={styles.movieOverlay}>
-                          <p className={styles.movieTitle}>{movie.title}</p>
+                          <p className={styles.movieTitleOverlay}>{movie.title}</p>
                           <div className={styles.movieRating}>
                             <p className={styles.voteAverage}>{parseFloat(movie.vote_average).toFixed(1)}</p>
                             <Star size={17} />
