@@ -384,6 +384,15 @@
     margin: 2rem 0;
 }
 
+.categoriesHeader {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin: 40px 0;
+}
+
 .categoriesContainer h2 {
     padding: 1.5rem;
     font-weight: 500 !important;

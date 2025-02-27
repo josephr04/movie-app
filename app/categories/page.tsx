@@ -81,7 +81,9 @@ export default async function page() {
 
   return (
     <div className={styles.categoriesContainer}>
-      <h1>Categories</h1>
+      <div className={styles.categoriesHeader}>
+        <h1>Categories</h1>
+      </div>
       <div className={styles.categoryList}>
       {genres.map((genre) => {
         const slug = slugify(genre.name, { lower: true });
