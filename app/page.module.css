@@ -481,9 +481,11 @@
     margin: 40px 0;
 }
 
-.categoriesContainer h2 {
+.categoriesContainer h1 {
     padding: 1.5rem;
     font-weight: 500 !important;
+    animation: fadeInUp 0.4s ease-out;
+    animation-fill-mode: forwards;
 }
 
 .categoryList {
