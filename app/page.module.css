@@ -168,6 +168,24 @@
     align-items: center;
     transition: opacity 0.5s ease-in-out;
 }
+
+.loadingItems {
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;  
+}
+
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; /* Espacio entre las películas y el loader */
+  }
   
 /* Error message Style */
 .errorMessage {
@@ -278,9 +296,25 @@
 
 .movieCard {
     position: relative;
-    width: 250px;
-    min-width: 150px;
+    min-width: 100px;
     transition: all 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.movieCard {
+    opacity: 0;
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: forwards;
 }
   
 .movieBanner {
@@ -522,3 +556,45 @@
 .genreTitle {
     color: #e5510c;
 }
+
+/* Popular Page styles */
+
+.popularContainer {
+    width: 100%;
+    padding: 20px 30px;
+    justify-items: center;
+    margin: 2rem 0;
+}
+
+.popularHeader {
+    display: flex; 
+    justify-content: left; 
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin: 40px 0;
+}
+
+.popularHeader h1 {
+    margin-left: 25px;
+    font-size: 30;
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: forwards;
+}
+
+/* Popular List Style */
+
+.popularList {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    margin: 10px;
+}
+
+.popularList {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: forwards;
+}
+
+
