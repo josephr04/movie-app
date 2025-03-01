@@ -5,19 +5,35 @@
     width: 100%;
     height: 60px;
     display: flex;
-    align-items: center;
-    padding: 12px 100px;
     transition: 0.5s;
     z-index: 10000;
     transition: background-color 0.3s ease-in-out;
 }
 
-.headerTransparent {
+.headerTransparent .activeNav {
+    background-color: transparent;
+    color: #ffc404;
+}
+
+.headerTransparent .navListItems:hover {
+    background-color: transparent;
+}
+
+.headerTransparent .search:hover {
     background-color: transparent;
 }
 
 .headerScrolled {
-    background-color: rgb(30, 31, 36);
+    background-color: #1e1f24;
+}
+
+/* Header Logo Style */
+
+.logoLink {
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .logo {
@@ -31,32 +47,70 @@
     font-family: fantasy;
 }
 
-.nav {
-    display: flex;
-    list-style: none;
-    margin: 0 20px;
-}
+/* Logo animation */
   
-.nav-link {
+#test {
+    padding-right: 5px;
+    background: linear-gradient(#ffc404, #ffc404) left no-repeat, #ffff;
+    background-size: 0% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.4s ease-in-out;
+}
+
+#test:hover {
+    background-size: 100% 100%;
+}
+
+/* Header items Style */
+
+.navList {
+    display: flex;
+    height: 100%;
+}
+
+.navListItems {
+    padding: 0 20px;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+
     color: #ffff;
     text-decoration: none;
-    font-size: 16;
+    font-size: 15;
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.3s;
 }
-  
-.nav-link:hover,
-.nav-links.active {
-    color: #e5510c;
-}  
+
+.navListItems a {
+    display: block;
+}
+
+.navListItems:hover,
+.activeNav {
+    background-color: #121213;
+    color: #ffc404;
+}
 
 .search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: auto;
-    width: 30px;
+    width: 70px;
+    transition: 0.3s;
 }
+
+.search:hover {
+    background-color: #121213;
+    color: #ffc404;
+} 
 
 /* Banner Styles */
 
