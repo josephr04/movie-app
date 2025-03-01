@@ -101,9 +101,9 @@ export async function CardCarousel({ title, category, genreId }: CardCarouselPro
             <div className="carousel-inner">
               {movieChunks.map((chunk, chunkIndex) => (
                 <div key={chunkIndex} className={`carousel-item ${chunkIndex === 0 ? "active" : ""}`}>
-                  <div className="d-flex justify-content-center">
+                  <div className="d-flex justify-content-center" style={{marginInline: 26}}>
                     {chunk.map((movie, index) => (
-                      <div key={index} className={`text-center mx-3 ${styles.movieCard}`}>
+                      <div key={index} className={`text-center mx-3 w-100 ${styles.movieCard}`}>
                         <a className={styles.movieOverlay}>
                           <p className={styles.movieTitleOverlay}>{movie.title}</p>
                           <div className={styles.movieRating}>
