@@ -584,9 +584,9 @@
     animation-fill-mode: forwards;
 }
 
-/* Popular List Style */
+/* Movie List Component Style */
 
-.popularList {
+.movieList {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px;
@@ -594,9 +594,33 @@
     margin: 10px;
 }
 
-.popularList {
+.movieList {
     animation: fadeInUp 0.5s ease-out;
     animation-fill-mode: forwards;
 }
 
+/* Upcoming Page Style */
+
+.upcomingContainer {
+    width: 100%;
+    padding: 20px 30px;
+    justify-items: center;
+    margin: 2rem 0;
+}
+
+.upcomingHeader {
+    display: flex; 
+    justify-content: left; 
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin: 40px 0;
+}
+
+.upcomingHeader h1 {
+    margin-left: 25px;
+    font-size: 30;
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: forwards;
+}
 
