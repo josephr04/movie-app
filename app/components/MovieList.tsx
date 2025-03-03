@@ -77,7 +77,7 @@ export default function MovieList({ initialMovies, category }: MovieListProps) {
 
   return (
     <div>
-      <div className={styles.popularList}>
+      <div className={styles.movieList}>
         {movies.map((movie) => (
           <div key={movie.id} className={`text-center mx-3 ${styles.movieCard}`}>
             <a className={styles.movieOverlay}>
