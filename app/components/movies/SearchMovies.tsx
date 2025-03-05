@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MovieCard } from "./movies/MovieCard";
+import { MovieCard } from "./MovieCard";
 import styles from "../page.module.css";
 
 interface Movie {
