@@ -1,5 +1,5 @@
-import MovieList from "../components/MovieList";
-import { getMovies } from "../components/GetMovies"
+import MovieList from "../components/movies/MovieList";
+import { getMovies } from "../components/movies/GetMovies"
 import styles from "../page.module.css";
 
 export default async function Page() {
