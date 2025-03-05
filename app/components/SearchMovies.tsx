@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import { MovieCard } from "./movies/MovieCard";
-import CircularProgress from '@mui/material/CircularProgress';
 import styles from "../page.module.css";
 
 interface Movie {
@@ -16,20 +15,22 @@ interface Movie {
 
 interface SearchListProps {
     name: string;
+    setLoading: (loading: boolean) => void;
 }
 
-export function SearchMovies({ name }: SearchListProps) {
+export function SearchMovies({ name, setLoading }: SearchListProps) {
     const [movies, setMovies] = useState<Movie[]>([]);
-    const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [loadingLocal, setLoadingLocal] = useState(true);
 
     useEffect(() => {
         if (!name) return;
 
         const fetchMovies = async () => {
-            setLoading(true);
-            setMovies([]);
+            setMovies([]); 
             setError("");
+            setLoading(true);
+            setLoadingLocal(true);
 
             await new Promise((resolve) => setTimeout(resolve, 1000));
 
@@ -54,31 +55,27 @@ export function SearchMovies({ name }: SearchListProps) {
                 console.error(err);
             } finally {
                 setLoading(false);
+                setLoadingLocal(false);
             }
         };
 
         fetchMovies();
-    }, [name]);
+    }, [name, setLoading]);
 
     if (error) {
         return <div className={styles.errorMessage}>{error}</div>;
     }
 
     return (
-        <div>
-            {movies.length === 0 && !loading && <div className={styles.notFoundMessage}>No results found. Try another search.</div>}
-
+        <>
+            {!loadingLocal && movies.length === 0 && (
+                <h3 className={styles.searchLoading}>No results found. Try another search.</h3>
+            )}
             <div className={styles.movieList}>
                 {movies.map((movie) => (
                     <MovieCard key={movie.id} movie={movie} />
                 ))}
             </div>
-
-            {loading && (
-                <div className={styles.searchLoading}>
-                    <CircularProgress color="inherit" size={50}/>
-                </div>
-            )}
-        </div>
+        </>
     );
 }
