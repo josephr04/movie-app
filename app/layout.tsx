@@ -4,10 +4,11 @@ import { Suspense } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import BootstrapClient from "./components/BootstrapClient";
 import Header from "./components/header/Header";
+import CircularProgress from '@mui/material/CircularProgress';
 import { Footer } from "./components/Footer";
 import { BackToTop } from "./components/BackToTop";
-import { Loading } from "./components/Loading";
 import { PrimeReactProvider } from "primereact/api";
+import styles from "./page.module.css" ;
 import "./globals.css";
 
 const geistSans = Geist({
@@ -35,7 +36,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <PrimeReactProvider value={{ ripple: true }}>
           <Header />
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<div className={styles.searchLoading}><CircularProgress color="inherit" size={50}/></div>}>
             <main>{children}</main>
             <BackToTop />
             <Footer />
