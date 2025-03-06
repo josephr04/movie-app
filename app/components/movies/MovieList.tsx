@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
-import { LoadingItems } from "./Loading";
-import { MovieCard } from "./movies/MovieCard";
-import { UseInfiniteScroll } from "../hooks/UseScroll";
+import React, { useState, useCallback } from "react";
+import { LoadingItems } from "../Loading";
+import { MovieCard } from "../movies/MovieCard";
+import { UseInfiniteScroll } from "../../hooks/UseScroll";
 import styles from "../../page.module.css";
 
 interface Movie {
