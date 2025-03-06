@@ -1,6 +1,6 @@
 import React from "react";
-import { Star } from 'lucide-react';
-import { FadeInOnScroll } from "../Animations";  // Import the client component
+import { FadeInOnScroll } from "../Animations";
+import { MovieCard } from "@components/movies/MovieCard";
 import styles from '../../page.module.css';
 
 interface CardCarouselProps {
@@ -102,26 +102,8 @@ export async function CardCarousel({ title, category, genreId }: CardCarouselPro
               {movieChunks.map((chunk, chunkIndex) => (
                 <div key={chunkIndex} className={`carousel-item ${chunkIndex === 0 ? "active" : ""}`}>
                   <div className="d-flex justify-content-center" style={{marginInline: 26}}>
-                    {chunk.map((movie, index) => (
-                      <div key={index} className={`text-center mx-3 w-100 ${styles.movieCard}`}>
-                        <a className={styles.movieOverlay}>
-                          <p className={styles.movieTitleOverlay}>{movie.title}</p>
-                          <div className={styles.movieRating}>
-                            <p className={styles.voteAverage}>{parseFloat(movie.vote_average).toFixed(1)}</p>
-                            <Star size={17} />
-                            <p>({movie.vote_count})</p>
-                          </div>
-                          <p className={styles.movieDescription}>{movie.overview}</p>
-                        </a>
-                        <div className={styles.movieBanner}>
-                          <img 
-                            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
-                            className="d-block w-100" 
-                            alt={movie.title} 
-                          />
-                        </div>
-                        <p className={styles.movieTitle}>{movie.title}</p>
-                      </div>
+                    {chunk.map((movie) => (
+                      <MovieCard key={movie.id} movie={movie}/>
                     ))}
                   </div>
                 </div>
