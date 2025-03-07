@@ -1,8 +1,8 @@
 "use client";
 
-import styles from '../page.module.css';
 import { useState, useEffect } from "react";
 import { FaArrowUp } from "react-icons/fa";
+import styles from '../page.module.css';
 
 export function BackToTop() {
   const [showButton, setShowButton] = useState(false);

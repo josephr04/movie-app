@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback } from "react";
 import { LoadingItems } from "../Loading";
-import { MovieCard } from "../movies/MovieCard";
+import { MovieCard } from "@components/movies/MovieCard";
 import { UseInfiniteScroll } from "../../hooks/UseScroll";
 import styles from "../../page.module.css";
 

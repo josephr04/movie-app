@@ -1,7 +1,7 @@
 import React from 'react';
 import slugify from "slugify";
-import { CardCarousel } from "../../components/home/CardCarousel";
-import { Banner } from "../../components/home/banner";
+import { CardCarousel } from "@components//home/CardCarousel";
+import { Banner } from "@components//home/banner";
 import { notFound } from "next/navigation";
 import styles from '../../page.module.css';
 
@@ -16,7 +16,7 @@ interface Genre {
   name: string;
 }
 
-async function getGenres(): Promise<Genre[]> { // ✅ Explicit return type
+async function getGenres(): Promise<Genre[]> {
   const url = "https://api.themoviedb.org/3/genre/movie/list?language=en-US";
   const options = {
     method: "GET",

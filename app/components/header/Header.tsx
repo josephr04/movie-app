@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Search } from 'lucide-react';
-import { DynamicHeader } from "../Animations";
+import { DynamicHeader } from "@components/Animations";
 import { NavList } from './NavList';
 import { Ripple } from 'primereact/ripple';
 import styles from '../../page.module.css';
