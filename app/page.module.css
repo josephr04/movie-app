@@ -718,3 +718,11 @@
     opacity: 0;
   }
 }
+
+/* Movie Page Styles */
+
+.movieHeader {
+  display: flex;
+  width: 100%;
+  padding: 20px;
+}
