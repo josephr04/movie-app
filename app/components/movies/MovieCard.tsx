@@ -20,9 +20,10 @@ interface MovieCardProps {
 
 export function MovieCard({ movie }: MovieCardProps) {
   const slug = slugify(movie.title, { lower: true });
+  const movieId = movie.id;
 
   return (
-    <Link href={`/movies/${slug}`} className={`text-center mx-3 w-100 ${styles.movieCard} p-ripple`}>
+    <Link href={`/movies/${movieId}/${slug}`} className={`text-center mx-3 w-100 ${styles.movieCard} p-ripple`}>
         <div className={styles.movieOverlay}>
           <p className={styles.movieTitleOverlay}>{movie.title}</p>
           <div className={styles.movieRating}>
