@@ -3,7 +3,7 @@ import styles from '../../../page.module.css';
 interface PageProps {
   params : {
     id: string;
-    slug: string,
+    slug?: string;
   };
 }
 
@@ -27,12 +27,16 @@ async function getMovieData(slug: string) {
 }
 
 export default async function page({ params }: PageProps) {
-  const movieData = await getMovieData(params.id);
+  const movie = await getMovieData(params.id);
 
   return (
     <div>
       <div className={styles.movieHeader}>
-        <h1>{movieData.title}</h1>
+        <img
+            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+            className="d-block w-100"
+            alt={movie.title}
+        />      
       </div>
     </div>
   )
