@@ -722,7 +722,6 @@
 /* Movie Page Styles */
 
 .movieHeader {
-  display: flex;
   width: 100%;
   height: 50vh;
 }
@@ -731,4 +730,5 @@
   width: 100%;
   height: 500px;
   object-fit: cover;
+  opacity: 0.07;
 }
