@@ -1,4 +1,5 @@
 import styles from '../../../page.module.css';
+import slugify from "slugify";
 
 interface PageProps {
   params : {
@@ -32,11 +33,30 @@ export default async function page({ params }: PageProps) {
   return (
     <div>
       <div className={styles.movieHeader}>
-        <img
+        <div className={styles.moviePageInfo}>
+          <div className={styles.moviePoster}>
+            <img
+              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              alt={movie.title}
+            />
+          </div>
+          <div>
+            <h1>{movie.title}</h1>
+            <div className={styles.genresContainer}>
+              <p>{movie.release_date.split("-")[0]}</p>
+              <p>{Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m</p>
+              {movie.genres.map((genre: { id: number; name: string }) => (
+                <a className={styles.genreLink} key={genre.id} href={`/categories/${slugify(genre.name, { lower: true })}`}>{genre.name}</a>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className={styles.movieBackgroundImg}>
+          <img
             src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-            className="d-block w-100"
             alt={movie.title}
-        />      
+          />
+        </div>
       </div>
     </div>
   )
