@@ -722,36 +722,45 @@
 /* Movie Page Styles */
 
 .movieHeader {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding: 100px 60px;
+  min-height: 500px;
+  gap: 40px;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 50vh;
+  align-items: center;
+  justify-content: left;
+  color: white;
+  z-index: 1;
 }
 
-.movieBackgroundImg {
-  max-width: 500px;
-}
-
-.movieBackgroundImg img {
-  min-width: 500px;
-  width: 100%;
-  object-fit: cover;
+.movieHeader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
 }
 
 .moviePoster {
-  
+  width: 300px;
 }
 
 .moviePoster img {
-  width: 40%;
+  width: 100%;
   min-width: 150px;
   height: auto;
   border-radius: 12px;
 }
 
 .moviePageInfo {
-  display: flex;
+  width: 600px;
 }
+
+/* Movie Genres Style */
 
 .genresContainer {
   display: flex;
@@ -765,5 +774,19 @@
 }
 
 .genreLink:hover {
+  color: #ffc404;
+}
+
+/* External links Style */
+.externalLinks h1 {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.homePageIcon {
+  transition: 0.3s;
+}
+
+.homePageIcon:hover {
   color: #ffc404;
 }
