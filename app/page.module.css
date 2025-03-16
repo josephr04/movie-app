@@ -391,6 +391,7 @@
 
 .movieRating {
   display: flex;
+  margin-top: 10px;
 }
 
 .movieRating > * {
@@ -741,7 +742,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   z-index: -1;
 }
 
@@ -757,6 +758,8 @@
 }
 
 .moviePageInfo {
+  display: flex;
+  flex-direction: column;
   width: 600px;
 }
 
@@ -789,4 +792,11 @@
 
 .homePageIcon:hover {
   color: #ffc404;
+}
+
+.movieRecommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 3rem;
 }
