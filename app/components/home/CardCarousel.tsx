@@ -5,8 +5,9 @@ import styles from '../../page.module.css';
 
 interface CardCarouselProps {
   title: React.ReactNode;
-  category: string;
+  category?: string;
   genreId?: number;
+  movieId?: number;
 }
 
 interface response {
@@ -62,12 +63,33 @@ async function getMoviesByGenre(category: string, genreId: number): Promise<Movi
   return (await res.json()) as Movie;
 }
 
-export async function CardCarousel({ title, category, genreId }: CardCarouselProps) {
+async function getMoviesRecommendations(movieId: number): Promise<Movie> {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=en-US&page=1`;
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
+    },
+  };
+
+  const res = await fetch(url, options);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch movies");
+  }
+
+  return (await res.json()) as Movie;
+}
+
+export async function CardCarousel({ title, category = "popular", genreId, movieId }: CardCarouselProps) {
   let posts = null;
 
   try {
     if (genreId !== undefined) {
       posts = await getMoviesByGenre(category, genreId);
+    } else if (movieId !== undefined) {
+      posts = await getMoviesRecommendations(movieId);
     } else {
       posts = await getMovies(category);
     }
