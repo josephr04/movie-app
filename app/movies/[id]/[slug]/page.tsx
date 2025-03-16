@@ -3,6 +3,7 @@ import Image from "next/image";
 import tmdbLogo from "@assets/tmdb-logo.png";
 import Link from 'next/link';
 import LanguageIcon from '@mui/icons-material/Language';
+import { CardCarousel } from "@components/home/CardCarousel";
 import styles from '../../../page.module.css';
 
 interface PageProps {
@@ -50,8 +51,11 @@ export default async function page({ params }: PageProps) {
           <div className={styles.genresContainer}>
             <p>{movie.release_date.split("-")[0]}</p>
             <p>{Math.floor(movie.runtime / 60)}h {movie.runtime % 60}m</p>
-            {movie.genres.map((genre: { id: number; name: string }) => (
-              <a className={styles.genreLink} key={genre.id} href={`/categories/${slugify(genre.name, { lower: true })}`}>{genre.name}</a>
+            {movie.genres.map((genre: { id: number; name: string }, index: number) => (
+              <span key={genre.id}>
+                <a className={styles.genreLink} href={`/categories/${slugify(genre.name, { lower: true })}`}>{genre.name}</a>
+                {index < movie.genres.length - 1 && ", "}
+              </span>
             ))}
           </div>
           <div className={styles.movieRating}>
@@ -66,6 +70,9 @@ export default async function page({ params }: PageProps) {
             </Link>
           </div>
         </div>
+      </div>
+      <div className={styles.movieRecommendations}>
+        <CardCarousel title="Recommendations" movieId={movie.id}/>
       </div>
     </div>
   )
