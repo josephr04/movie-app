@@ -27,17 +27,17 @@ export function MovieCard({ movie }: MovieCardProps) {
         <div className={styles.movieOverlay}>
           <p className={styles.movieTitleOverlay}>{movie.title}</p>
           <div className={styles.movieRating}>
-              <p className={styles.voteAverage}>{parseFloat(movie.vote_average).toFixed(1)}</p>
-              <Star size={17} />
-              <p>({movie.vote_count})</p>
+            <p className={styles.voteAverage}>{parseFloat(movie.vote_average).toFixed(1)}</p>
+            <Star size={17} />
+            <p>({movie.vote_count})</p>
           </div>
           <p className={styles.movieDescription}>{movie.overview}</p>
         </div>
         <div className={styles.movieBanner}>
           <img
-              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              className="d-block w-100"
-              alt={movie.title}
+            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+            className="d-block w-100"
+            alt={movie.title}
           />
         </div>
         <p className={styles.movieTitle}>{movie.title}</p>
