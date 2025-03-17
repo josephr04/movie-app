@@ -19,7 +19,26 @@ async function getMovieData(slug: string) {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzN2ZiZTYyNGNhODExOWIxNzAxZTUyMGEwOWQ5ZjM2MSIsIm5iZiI6MTczNzk1MTQzOC4wOTIsInN1YiI6IjY3OTcwOGNlMGUxZTA0ODZkNjJiMmU1YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.WMOdLcTEtcLaeYQ2bbyaAm88sCVzJsAlSERPUF87C7U'
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
+    }
+  };
+
+  const res = await fetch(url, options);
+
+  if (!res.ok) {
+    throw new Error("Error fetching movie");
+  }
+
+  return res.json();
+}
+
+async function getMovieVideo(movieId: number) {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
     }
   };
 
@@ -33,8 +52,11 @@ async function getMovieData(slug: string) {
 }
 
 export default async function page({ params }: PageProps) {
-  const movie = await getMovieData(params.id);
+  const { id } = await params;
+  const movie = await getMovieData(id);
   const rating = parseFloat(movie.vote_average).toFixed(1);
+  const videos = await getMovieVideo(movie.id);
+  const trailer = videos.results.find((v: { type: string}) => v.type === "Trailer") || videos.results[0] || null;
 
   return (
     <div>
@@ -69,6 +91,26 @@ export default async function page({ params }: PageProps) {
               <LanguageIcon />
             </Link>
           </div>
+        </div>
+      </div>
+      <div className={styles.moreDetails}>
+        <h1>Trailer:</h1>
+        <div className={styles.videoContainer}>
+          {trailer ? (
+            <iframe
+              width="560"
+              height="315"
+              src={`https://www.youtube.com/embed/${trailer.key}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <div className={styles.noTrailer}>
+              <p>No trailer available.</p>
+            </div>
+          )}
         </div>
       </div>
       <div className={styles.movieRecommendations}>
