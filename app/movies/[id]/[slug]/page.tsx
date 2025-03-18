@@ -2,7 +2,7 @@ import slugify from "slugify";
 import Image from "next/image";
 import tmdbLogo from "@assets/tmdb-logo.png";
 import Link from 'next/link';
-import LanguageIcon from '@mui/icons-material/Language';
+import { TbWorld } from "react-icons/tb";
 import { CardCarousel } from "@components/home/CardCarousel";
 import styles from '../../../page.module.css';
 
@@ -88,7 +88,7 @@ export default async function page({ params }: PageProps) {
           <div className={styles.externalLinks}>
             <h1>External Links:</h1>
             <Link className={`${styles.homePageIcon}`} href={movie.homepage} target="_blank" title="Official Site">
-              <LanguageIcon />
+              <TbWorld size={25} />
             </Link>
           </div>
         </div>
