@@ -45,7 +45,26 @@ async function getMovieVideo(movieId: number) {
   const res = await fetch(url, options);
 
   if (!res.ok) {
-    throw new Error("Error fetching movie");
+    throw new Error("Error fetching video");
+  }
+
+  return res.json();
+}
+
+async function getMovieCast(movieId: number) {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_TMDB_API_KEY}`,
+    }
+  };
+
+  const res = await fetch(url, options);
+
+  if (!res.ok) {
+    throw new Error("Error fetching cast");
   }
 
   return res.json();
@@ -57,6 +76,7 @@ export default async function page({ params }: PageProps) {
   const rating = parseFloat(movie.vote_average).toFixed(1);
   const videos = await getMovieVideo(movie.id);
   const trailer = videos.results.find((v: { type: string}) => v.type === "Trailer") || videos.results[0] || null;
+  const credits = await getMovieCast(movie.id);
 
   return (
     <div>
@@ -94,23 +114,25 @@ export default async function page({ params }: PageProps) {
         </div>
       </div>
       <div className={styles.moreDetails}>
-        <h1>Trailer:</h1>
-        <div className={styles.videoContainer}>
-          {trailer ? (
-            <iframe
-              width="560"
-              height="315"
-              src={`https://www.youtube.com/embed/${trailer.key}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          ) : (
-            <div className={styles.noTrailer}>
-              <p>No trailer available.</p>
-            </div>
-          )}
+        <div>
+          <h1>Trailer:</h1>
+          <div className={styles.videoContainer}>
+            {trailer ? (
+              <iframe
+                width="560"
+                height="315"
+                src={`https://www.youtube.com/embed/${trailer.key}`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            ) : (
+              <div className={styles.noTrailer}>
+                <p>No trailer available.</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       <div className={styles.movieRecommendations}>

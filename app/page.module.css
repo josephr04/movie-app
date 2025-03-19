@@ -795,14 +795,15 @@
 }
 
 .moreDetails {
+  display: flex;
   width: 100%;
   padding: 60px 60px;
   min-height: 500px;
 }
 
 .moreDetails h1 {
-  font-weight: 600;
-  font-size: 1.5rem;
+  font-weight: 400;
+  font-size: 1.25rem;
 }
 
 .videoContainer {
@@ -831,4 +832,10 @@
   flex-direction: column;
   gap: 2rem;
   padding-bottom: 3rem;
+}
+
+.castGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
 }
