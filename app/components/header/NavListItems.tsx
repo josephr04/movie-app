@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { NavItems } from '@/app/data/NavListData';
-import styles from '../../page.module.css';
+import styles from '@styles/page.module.css';
 import { Ripple } from 'primereact/ripple';
 
 interface NavListItemsProps {

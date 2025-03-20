@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { MovieCard } from "./MovieCard";
-import styles from "../../page.module.css";
+import styles from "@styles/page.module.css";
 
 interface Movie {
   id: string;

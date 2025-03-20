@@ -1,6 +1,6 @@
 import React from "react";
 import slugify from "slugify";
-import styles from '../../page.module.css';
+import styles from '@styles/page.module.css';
 
 type Movie = {
   results: Array<response>;

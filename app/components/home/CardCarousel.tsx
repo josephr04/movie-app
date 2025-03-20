@@ -1,7 +1,7 @@
 import React from "react";
 import { FadeInOnScroll } from "../Animations";
 import { MovieCard } from "@components/movies/MovieCard";
-import styles from '../../page.module.css';
+import styles from '@styles/page.module.css';
 
 interface CardCarouselProps {
   title: React.ReactNode;

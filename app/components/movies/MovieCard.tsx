@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Star } from "lucide-react";
 import { Ripple } from 'primereact/ripple';
 import slugify from "slugify";
-import styles from '../../page.module.css';
+import styles from '@styles/page.module.css';
 
 interface Movie {
   id: string;

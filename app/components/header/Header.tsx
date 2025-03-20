@@ -4,7 +4,7 @@ import { Search } from 'lucide-react';
 import { DynamicHeader } from "@components/Animations";
 import { NavList } from './NavList';
 import { Ripple } from 'primereact/ripple';
-import styles from '../../page.module.css';
+import styles from '@styles/page.module.css';
 
 function Header() {
   return (

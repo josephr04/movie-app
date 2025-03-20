@@ -6,7 +6,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import CircularProgress from '@mui/material/CircularProgress';
-import styles from "../page.module.css";
+import styles from "@styles/page.module.css";
 import { SearchMovies } from "@components/movies/SearchMovies";
 
 export default function Page() {  

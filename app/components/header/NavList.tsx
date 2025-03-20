@@ -4,7 +4,7 @@ import React from 'react';
 import { usePathname } from 'next/navigation';
 import { navListData } from '../../data/NavListData';
 import { NavListItems } from './NavListItems';
-import styles from '../../page.module.css';
+import styles from '@styles/page.module.css';
 
 export function NavList() {
   const pathname = usePathname();

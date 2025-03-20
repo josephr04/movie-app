@@ -1,6 +1,6 @@
 import MovieList from "@components//movies/MovieList";
 import { getMovies } from "@components//movies/GetMovies"
-import styles from "../page.module.css";
+import styles from "@styles/page.module.css";
 
 export default async function Page() {
   const initialMovies = await getMovies(1);

@@ -4,7 +4,7 @@ import tmdbLogo from "@assets/tmdb-logo.png";
 import Link from 'next/link';
 import { TbWorld } from "react-icons/tb";
 import { CardCarousel } from "@components/home/CardCarousel";
-import styles from '../../../page.module.css';
+import styles from '@styles/page.module.css';
 
 interface PageProps {
   params : {

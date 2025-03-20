@@ -1,4 +1,4 @@
-import styles from '../page.module.css';
+import styles from '@styles/page.module.css';
 import Image from 'next/image';
 import { FaGithub } from "react-icons/fa";
 

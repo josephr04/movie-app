@@ -3,7 +3,7 @@ import slugify from "slugify";
 import { CardCarousel } from "@components//home/CardCarousel";
 import { Banner } from "@components//home/banner";
 import { notFound } from "next/navigation";
-import styles from '../../page.module.css';
+import styles from '@styles/page.module.css';
 
 interface PageProps {
   params: {
