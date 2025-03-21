@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import Input from '@mui/material/Input';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import CircularProgress from '@mui/material/CircularProgress';
-import styles from "@styles/page.module.css";
-import { SearchMovies } from "@components/movies/SearchMovies";
+import styles from '@styles/page.module.css';
+import { SearchMovies } from '@components/movies/SearchMovies';
 
 export default function Page() {  
   const [searchTerm, setSearchTerm] = useState("");

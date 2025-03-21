@@ -1,8 +1,8 @@
 import React from 'react'
 import Link from 'next/link';
-import { Star } from "lucide-react";
+import { Star } from 'lucide-react';
 import { Ripple } from 'primereact/ripple';
-import slugify from "slugify";
+import slugify from 'slugify';
 import styles from '@styles/page.module.css';
 
 interface Movie {

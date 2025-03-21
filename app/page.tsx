@@ -1,5 +1,5 @@
-import { Banner } from "@components/home/banner";
-import { CardCarousel } from "@components/home/CardCarousel"
+import { Banner } from '@components/home/banner';
+import { CardCarousel } from '@components/home/CardCarousel'
 import styles from './page.module.css';
 
 export default function Home() {

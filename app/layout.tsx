@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
 import 'bootstrap/dist/css/bootstrap.css';
 import CircularProgress from '@mui/material/CircularProgress';
-import { PrimeReactProvider } from "primereact/api";
-import BootstrapClient from "@components/BootstrapClient";
-import Header from "@components/header/Header";
-import { Footer } from "@components/Footer";
-import { BackToTop } from "@components/BackToTop";
-import styles from "./page.module.css";
-import "./globals.css";
-import { Suspense } from "react";
+import { PrimeReactProvider } from 'primereact/api';
+import BootstrapClient from '@components/BootstrapClient';
+import Header from '@components/header/Header';
+import { Footer } from '@components/Footer';
+import { BackToTop } from '@components/BackToTop';
+import styles from './page.module.css';
+import './globals.css';
+import { Suspense } from 'react';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '@styles/page.module.css';
 import Link from 'next/link'
-import slugify from "slugify";
+import slugify from 'slugify';
 import { Ripple } from 'primereact/ripple';
 
 type Genre = {

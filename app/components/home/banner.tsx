@@ -1,5 +1,5 @@
-import React from "react";
-import slugify from "slugify";
+import React from 'react';
+import slugify from 'slugify';
 import styles from '@styles/page.module.css';
 
 type Movie = {

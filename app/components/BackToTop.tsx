@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { FaArrowUp } from "react-icons/fa";
+import { useState, useEffect } from 'react';
+import { FaArrowUp } from 'react-icons/fa';
 import styles from '@styles/page.module.css';
 
 export function BackToTop() {

@@ -1,6 +1,6 @@
-import React from "react";
-import { FadeInOnScroll } from "../Animations";
-import { MovieCard } from "@components/movies/MovieCard";
+import React from 'react';
+import { FadeInOnScroll } from '../Animations';
+import { MovieCard } from '@components/movies/MovieCard';
 import styles from '@styles/page.module.css';
 
 interface CardCarouselProps {

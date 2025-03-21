@@ -1,9 +1,9 @@
-import slugify from "slugify";
-import Image from "next/image";
-import tmdbLogo from "@assets/tmdb-logo.png";
+import slugify from 'slugify';
+import Image from 'next/image';
+import tmdbLogo from '@assets/tmdb-logo.png';
 import Link from 'next/link';
-import { TbWorld } from "react-icons/tb";
-import { CardCarousel } from "@components/home/CardCarousel";
+import { TbWorld } from 'react-icons/tb';
+import { CardCarousel } from '@components/home/CardCarousel';
 import styles from '@styles/page.module.css';
 
 interface PageProps {

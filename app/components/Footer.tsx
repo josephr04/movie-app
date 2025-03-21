@@ -1,6 +1,6 @@
 import styles from '@styles/page.module.css';
 import Image from 'next/image';
-import { FaGithub } from "react-icons/fa";
+import { FaGithub } from 'react-icons/fa';
 
 export function Footer() {
   return (

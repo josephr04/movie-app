@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import styles from "@styles/page.module.css";
+import React, { useEffect, useRef, useState } from 'react';
+import styles from '@styles/page.module.css';
 
 interface FadeInOnScrollProps {
   children: React.ReactNode;
