@@ -794,16 +794,21 @@
   color: #ffc404;
 }
 
-.moreDetails {
+.movieDetails {
   display: flex;
   width: 100%;
   padding: 60px 60px;
   min-height: 500px;
 }
 
-.moreDetails h1 {
+.movieDetails h1 {
+  color: #a3a3a3;
   font-weight: 400;
   font-size: 1.25rem;
+}
+
+.video {
+  padding-right: 3rem;
 }
 
 .videoContainer {
@@ -838,4 +843,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 10px;
+}
+
+.languages p {
+  margin: 4px 0;
+  line-height: 1;
+  font-size: 17px;
 }

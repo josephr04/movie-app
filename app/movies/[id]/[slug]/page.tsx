@@ -113,8 +113,8 @@ export default async function page({ params }: PageProps) {
           </div>
         </div>
       </div>
-      <div className={styles.moreDetails}>
-        <div>
+      <div className={styles.movieDetails}>
+        <div className={styles.video}>
           <h1>Trailer:</h1>
           <div className={styles.videoContainer}>
             {trailer ? (
@@ -132,6 +132,14 @@ export default async function page({ params }: PageProps) {
                 <p>No trailer available.</p>
               </div>
             )}
+          </div>
+        </div>
+        <div className={styles.details}>
+          <h1>Languages</h1>
+          <div className={styles.languages}>
+            {movie.spoken_languages.map((lang: {english_name: string}, index: number) => (
+              <p key={index}>{lang.english_name}</p>
+            ))}
           </div>
         </div>
       </div>
