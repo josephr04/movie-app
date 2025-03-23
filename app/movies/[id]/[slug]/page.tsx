@@ -51,8 +51,8 @@ async function getMovieVideo(movieId: number) {
   return res.json();
 }
 
-async function getMovieCast(movieId: number) {
-  const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
+async function getMovieReviews(movieId: number) {
+  const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`;
   const options = {
     method: 'GET',
     headers: {
@@ -64,7 +64,7 @@ async function getMovieCast(movieId: number) {
   const res = await fetch(url, options);
 
   if (!res.ok) {
-    throw new Error("Error fetching cast");
+    throw new Error("Error fetching reviews");
   }
 
   return res.json();
@@ -76,7 +76,7 @@ export default async function page({ params }: PageProps) {
   const rating = parseFloat(movie.vote_average).toFixed(1);
   const videos = await getMovieVideo(movie.id);
   const trailer = videos.results.find((v: { type: string}) => v.type === "Trailer") || videos.results[0] || null;
-  const credits = await getMovieCast(movie.id);
+  const reviews = await getMovieReviews(movie.id);
 
   return (
     <div>
