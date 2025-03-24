@@ -4,6 +4,7 @@ import tmdbLogo from '@assets/tmdb-logo.png';
 import Link from 'next/link';
 import { TbWorld } from 'react-icons/tb';
 import { CardCarousel } from '@components/home/CardCarousel';
+import ReviewCarousel from '@components/ReviewCarousel';
 import styles from '@styles/page.module.css';
 
 interface PageProps {
@@ -141,6 +142,9 @@ export default async function page({ params }: PageProps) {
               <p key={index}>{lang.english_name}</p>
             ))}
           </div>
+        </div>
+        <div className={styles.reviewCarousel}>
+          <ReviewCarousel reviews={reviews} />
         </div>
       </div>
       <div className={styles.movieRecommendations}>
