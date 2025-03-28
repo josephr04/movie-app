@@ -796,9 +796,15 @@
 
 .movieDetails {
   display: flex;
+  flex-direction: column;
+  gap: 3rem;
   width: 100%;
   padding: 60px 60px;
   min-height: 500px;
+}
+
+.movieSubDetails {
+  display: flex;
 }
 
 .movieDetails h1 {
@@ -849,4 +855,64 @@
   margin: 4px 0;
   line-height: 1;
   font-size: 17px;
+}
+
+.reviewCarousel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reviewCarousel h1 {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* Review Cards Style */
+
+.reviewCard {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 180px;
+  margin: 0 10px;
+  gap: 10px;
+  background-color: rgb(30, 31, 36);
+  border-radius: 0.5rem;
+  color: black;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userProfile h1 {
+  font-size: 16px;
+  color: rgb(237, 237, 237);
+  margin: 0;
+  font-weight: 400;
+}
+
+.reviewContent p {
+  margin: 0;
+  font-size: 14px;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 8rem;
+  line-clamp: 5; 
+  box-orient: vertical;
 }
