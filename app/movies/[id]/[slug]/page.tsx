@@ -115,35 +115,38 @@ export default async function page({ params }: PageProps) {
         </div>
       </div>
       <div className={styles.movieDetails}>
-        <div className={styles.video}>
-          <h1>Trailer:</h1>
-          <div className={styles.videoContainer}>
-            {trailer ? (
-              <iframe
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${trailer.key}`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            ) : (
-              <div className={styles.noTrailer}>
-                <p>No trailer available.</p>
-              </div>
-            )}
+        <div className={styles.movieSubDetails}>
+          <div className={styles.video}>
+            <h1>Trailer:</h1>
+            <div className={styles.videoContainer}>
+              {trailer ? (
+                <iframe
+                  width="560"
+                  height="315"
+                  src={`https://www.youtube.com/embed/${trailer.key}`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <div className={styles.noTrailer}>
+                  <p>No trailer available.</p>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-        <div className={styles.details}>
-          <h1>Languages</h1>
-          <div className={styles.languages}>
-            {movie.spoken_languages.map((lang: {english_name: string}, index: number) => (
-              <p key={index}>{lang.english_name}</p>
-            ))}
+          <div className={styles.details}>
+            <h1>Languages</h1>
+            <div className={styles.languages}>
+              {movie.spoken_languages.map((lang: {english_name: string}, index: number) => (
+                <p key={index}>{lang.english_name}</p>
+              ))}
+            </div>
           </div>
         </div>
         <div className={styles.reviewCarousel}>
+          <h1>{`${movie.title} Ratings & Reviews`}</h1>
           <ReviewCarousel reviews={reviews} />
         </div>
       </div>
