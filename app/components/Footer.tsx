@@ -8,7 +8,7 @@ export function Footer() {
       <div className={styles.tmdb}>
         <h6>Data provided by</h6>
         <a href="https://www.themoviedb.org" target='_blank' rel="noopener noreferrer">
-          <Image src="/assets/tmdb-logo.png" alt="TMDB Logo" width={40} height={32}/>
+          <Image src="/assets/tmdb-logo.png" alt="TMDB Logo" width={32} height={32}/>
         </a>
       </div>
       <h6>This project uses the TMDB API but is not endorsed or certified by TMDB.</h6>
