@@ -117,7 +117,8 @@ export async function CardCarousel({ title, category = "popular", genreId, movie
       <div className={styles.cardSectionTitle}>
         <h2>{title}</h2>
       </div>
-      <FadeInOnScroll>
+      {posts.results.length > 0 ? (
+        <FadeInOnScroll>
         <div className={styles.MovieCarousel}>
           <div id={`${category}`} className="carousel slide" data-bs-ride="false" data-bs-interval="false">
             <div className="carousel-inner">
@@ -130,7 +131,7 @@ export async function CardCarousel({ title, category = "popular", genreId, movie
                   </div>
                 </div>
               ))}
-            </div>
+                </div>
             <button className={`carousel-control-prev ${styles.movieCarouselButton}`} type="button" data-bs-target={`#${category}`} data-bs-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
@@ -141,7 +142,10 @@ export async function CardCarousel({ title, category = "popular", genreId, movie
             </button>
           </div>
         </div>
-      </FadeInOnScroll>
+        </FadeInOnScroll>
+      ) : (
+        <div className={styles.emptyRecommendations}>No recommendations available yet.</div>
+      )}
     </div>
   );
 }
