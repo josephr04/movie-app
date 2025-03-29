@@ -5,12 +5,14 @@ import { ReviewItem } from "@components/ReviewItem";
 
 interface AuthorDetails {
   username?: string;
+  name?: string;
   avatar_path?: string;
 }
 
 interface Review {
   id: string;
   username: string;
+  name: string;
   avatar_path: string;
   content: string;
 }
@@ -19,6 +21,7 @@ interface ReviewsResponse {
   results: {
     id: string;
     author_details: AuthorDetails;
+    name: string;
     content: string;
   }[];
 }
@@ -38,6 +41,7 @@ export default function ReviewCarousel({ reviews }: ReviewCarouselProps) {
   const formattedReviews: Review[] = reviews.results.map((review) => ({
     id: review.id,
     username: review.author_details.username || "Anonymous",
+    name: review.author_details.name || "Anonymous",
     avatar_path: review.author_details.avatar_path || "",
     content: review.content,
   }));
