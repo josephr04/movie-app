@@ -115,39 +115,79 @@ export default async function page({ params }: PageProps) {
         </div>
       </div>
       <div className={styles.movieDetails}>
-        <div className={styles.movieSubDetails}>
-          <div className={styles.video}>
-            <h1>Trailer:</h1>
-            <div className={styles.videoContainer}>
-              {trailer ? (
-                <iframe
-                  width="560"
-                  height="315"
-                  src={`https://www.youtube.com/embed/${trailer.key}`}
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              ) : (
-                <div className={styles.noTrailer}>
-                  <p>No trailer available.</p>
-                </div>
-              )}
+        <div>
+          <h1>Movie Details</h1>
+          <div className={styles.movieSubDetails}>
+            <div className={styles.video}>
+              <h2>Trailer:</h2>
+              <div className={styles.videoContainer}>
+                {trailer ? (
+                  <iframe
+                    width="560"
+                    height="315"
+                    src={`https://www.youtube.com/embed/${trailer.key}`}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                ) : (
+                  <div className={styles.noTrailer}>
+                    <p>No trailer available.</p>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-          <div className={styles.details}>
-            <h1>Languages</h1>
-            <div className={styles.languages}>
-              {movie.spoken_languages.map((lang: {english_name: string}, index: number) => (
-                <p key={index}>{lang.english_name}</p>
-              ))}
+            <div className={styles.details}>
+              <div>
+                <h2>Languages:</h2>
+                <div>
+                  {movie.spoken_languages.map((lang: {english_name: string}, index: number) => (
+                    <span key={index}>
+                      <span>{lang.english_name}</span>
+                      {index < movie.spoken_languages.length - 1 && ", "}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h2>Production Companies:</h2>
+                <div>
+                  {movie.production_companies.map((company: {name: string}, index: number) => (
+                    <span key={index}>
+                      <span>{company.name}</span>
+                      {index < movie.production_companies.length - 1 && ", "}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h2>Production Countries:</h2>
+                <div>
+                  {movie.production_countries.map((country: {name: string}, index: number) => (
+                    <span key={index}>
+                      <span>{country.name}</span>
+                      {index < movie.production_countries.length - 1 && ", "}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h2>Release Date:</h2>
+                <div>
+                  <p>{movie.release_date}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div className={styles.reviewCarousel}>
           <h1>{`${movie.title} Ratings & Reviews`}</h1>
-          <ReviewCarousel reviews={reviews} />
+          {reviews.results.length > 0 ? (
+            <ReviewCarousel reviews={reviews} />
+          ) : (
+            <p>No reviews available yet.</p>
+          )}
         </div>
       </div>
       <div className={styles.movieRecommendations}>
