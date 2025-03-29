@@ -125,6 +125,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(10, 10, 10) 100%);
 }
 
 .banner .movie {
@@ -423,6 +424,10 @@
   gap: 5px;
 }
 
+.tmdb h6 {
+  margin: 0;
+}
+
 .contactIcon {
   color: white;
 }
@@ -448,16 +453,19 @@
   transform: translateY(10px);
   transition: opacity 0.3s, transform 0.4s ease;
   z-index: 9999;
+  pointer-events: none;
 }
   
 .backToTop.show {
   opacity: 0.8;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .backToTop.hide {
   opacity: 0;
   transform: translateY(-10px);
+  pointer-events: none;
 }
 
 .backToTop:hover {
