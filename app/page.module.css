@@ -6,7 +6,7 @@
   height: 60px;
   display: flex;
   transition: 0.5s;
-  z-index: 10000;
+  z-index: 1000;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -746,6 +746,17 @@
   z-index: -1;
 }
 
+.movieHeader::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(10, 10, 10) 100%);
+  z-index: -1;
+}
+
 .moviePoster {
   width: 300px;
 }
@@ -805,16 +816,20 @@
 
 .movieSubDetails {
   display: flex;
+  gap: 4rem;
 }
 
 .movieDetails h1 {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.75rem;
+  padding-bottom: 20px;
+}
+
+.movieDetails h2 {
   color: #a3a3a3;
   font-weight: 400;
   font-size: 1.25rem;
-}
-
-.video {
-  padding-right: 3rem;
 }
 
 .videoContainer {
@@ -845,16 +860,18 @@
   padding-bottom: 3rem;
 }
 
-.castGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 10px;
+.emptyRecommendations {
+  padding: 0 40px;
 }
 
-.languages p {
-  margin: 4px 0;
-  line-height: 1;
-  font-size: 17px;
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.details h1 {
+  margin-bottom: 3px;
 }
 
 .reviewCarousel {
@@ -871,16 +888,23 @@
 
 /* Review Cards Style */
 
-.reviewCard {
+.reviewCard, .modalCard {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  height: 180px;
+  height: 190px;
   margin: 0 10px;
-  gap: 10px;
+  gap: 15px;
   background-color: rgb(30, 31, 36);
   border-radius: 0.5rem;
   color: black;
+  border: 2px solid transparent;
+  transition: border-color 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.reviewCard:hover {
+  border-color: #ffffff;
 }
 
 .avatar {
@@ -896,11 +920,19 @@
   gap: 10px;
 }
 
-.userProfile h1 {
+.userNames h1 {
   font-size: 16px;
   color: rgb(237, 237, 237);
   margin: 0;
+  padding: 0;
   font-weight: 400;
+}
+
+.userNames h2 {
+  font-size: 12px;
+  color: #a3a3a3;
+  margin: 0;
+  font-weight: 500;
 }
 
 .reviewContent p {
@@ -916,3 +948,79 @@
   line-clamp: 5; 
   box-orient: vertical;
 }
+
+/* Review Card Modal Style */
+
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+}
+
+.modalBackdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modalCard {
+  max-width: 800px;
+  height: auto;
+  max-height: 550px;
+  padding: 20px;
+  gap: 30px;
+  cursor: default;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.modalCard.active {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.modalUserProfile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.modalUserInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modalContent p {
+  margin: 0;
+  font-size: 14px;
+  text-align: justify;
+  color: #ffffffcc;
+}
+
+.closeButton {
+  margin-left: auto;
+  transition: all 0.1s ease-in-out;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background-color: #424242 !important;
+}
+
