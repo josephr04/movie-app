@@ -769,6 +769,17 @@
   width: 300px;
 }
 
+.emptyPoster {
+  width: 300px;
+  height: 450px;
+  background-color: #121213;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
 .moviePoster img {
   width: 100%;
   min-width: 150px;
