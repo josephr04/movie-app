@@ -34,11 +34,15 @@ export function MovieCard({ movie }: MovieCardProps) {
           <p className={styles.movieDescription}>{movie.overview}</p>
         </div>
         <div className={styles.movieBanner}>
-          <img
-            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-            className="d-block w-100"
-            alt={movie.title}
-          />
+          {movie.poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+              className="d-block w-100"
+              alt={movie.title}
+            />
+          ) : (
+            <div className={styles.emptyBanner}>No poster available</div>
+          )}
         </div>
         <p className={styles.movieTitle}>{movie.title}</p>
         <Ripple />
