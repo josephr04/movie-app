@@ -30,7 +30,7 @@ interface ReviewCarouselProps {
   reviews: ReviewsResponse;
 }
 
-export default function ReviewCarousel({ reviews }: ReviewCarouselProps) {
+export function ReviewCarousel({ reviews }: ReviewCarouselProps) {
   const responsiveOptions: CarouselResponsiveOption[] = [
     { breakpoint: "1400px", numVisible: 2, numScroll: 1 },
     { breakpoint: "1199px", numVisible: 3, numScroll: 1 },
