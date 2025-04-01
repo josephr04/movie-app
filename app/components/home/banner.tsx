@@ -1,5 +1,6 @@
 import React from 'react';
 import slugify from 'slugify';
+import { ScrollDown } from '@components/ScrollDown';
 import styles from '@styles/page.module.css';
 
 type Movie = {
@@ -102,40 +103,43 @@ export async function Banner({ genreId } : BannerProps) {
   const genreMap = Object.fromEntries(genres.map((genre) => [genre.id, genre.name]));
 
   return (
-    <div className={styles.banner}>
-      <div id="BannerCarousel" className="carousel slide" data-bs-ride="carousel">
-        <div className={`carousel-indicators ${styles.carouselIndicators}`}>
-          {posts.results.slice(0, 6).map((_, index) => (
-            <button key={index} type="button" data-bs-target="#BannerCarousel" data-bs-slide-to={index} className={index === 0 ? "active" : ""} aria-current="true" aria-label={`Slide ${index + 1}`}></button>
-          ))}
-        </div>
-        <div className="carousel-inner">
-          {posts.results.slice(0, 6).map((movie, index) => {
-            const slug = slugify(movie.title, { lower: true });
-            const movieId = movie.id;
-            return (
-              <div key={movieId} className={`carousel-item ${index === 0 ? "active" : ""}`} data-bs-interval={index === 0 ? 10000 : 2000}>
-                <div className={styles.imgOverlay}></div>  
-                <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="d-block w-100" alt={movie.title} />
-                <div className={`carousel-caption d-none d-md-block ${styles.movieInfo}`}>
-                  <h3>{movie.title}</h3>
-                  <p className={styles.movieGenres}>{movie.genre_ids.map((id) => genreMap[id]).join(", ")}</p>
-                  <p>{movie.overview}</p>
-                  <a href={`/movies/${movieId}/${slug}`} className="btn btn-warning">Watch more</a>
+    <div>
+      <div className={styles.banner}>
+        <div id="BannerCarousel" className="carousel slide" data-bs-ride="carousel">
+          <div className={`carousel-indicators ${styles.carouselIndicators}`}>
+            {posts.results.slice(0, 6).map((_, index) => (
+              <button key={index} type="button" data-bs-target="#BannerCarousel" data-bs-slide-to={index} className={index === 0 ? "active" : ""} aria-current="true" aria-label={`Slide ${index + 1}`}></button>
+            ))}
+          </div>
+          <div className="carousel-inner">
+            {posts.results.slice(0, 6).map((movie, index) => {
+              const slug = slugify(movie.title, { lower: true });
+              const movieId = movie.id;
+              return (
+                <div key={movieId} className={`carousel-item ${index === 0 ? "active" : ""}`} data-bs-interval={index === 0 ? 10000 : 2000}>
+                  <div className={styles.imgOverlay}></div>  
+                  <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} className="d-block w-100" alt={movie.title} />
+                  <div className={`carousel-caption d-none d-md-block ${styles.movieInfo}`}>
+                    <h3>{movie.title}</h3>
+                    <p className={styles.movieGenres}>{movie.genre_ids.map((id) => genreMap[id]).join(", ")}</p>
+                    <p>{movie.overview}</p>
+                    <a href={`/movies/${movieId}/${slug}`} className="btn btn-warning">Watch more</a>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+          <button className={`carousel-control-prev ${styles.carouselButton}`} type="button" data-bs-target="#BannerCarousel" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className={`carousel-control-next ${styles.carouselButton}`} type="button" data-bs-target="#BannerCarousel" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
         </div>
-        <button className={`carousel-control-prev ${styles.carouselButton}`} type="button" data-bs-target="#BannerCarousel" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button className={`carousel-control-next ${styles.carouselButton}`} type="button" data-bs-target="#BannerCarousel" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
       </div>
+      <ScrollDown />
     </div>
   );
 }
