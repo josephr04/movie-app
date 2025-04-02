@@ -1036,6 +1036,13 @@
   padding-right: 15px;
 }
 
+.modalContent p {
+  margin: 0;
+  font-size: 14px;
+  text-align: justify;
+  color: #fffc;
+}
+
 /* ScrollBar Style */
 
 .scrollContainer {
