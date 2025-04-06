@@ -1078,3 +1078,10 @@
     transform: translateY(10px);
   }
 }
+
+@media (max-width: 480px) {
+  .carouselIndicators {
+    bottom: 5% !important;
+    margin-left: 20% !important;
+  }
+}
