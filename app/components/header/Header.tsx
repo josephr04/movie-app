@@ -12,7 +12,9 @@ function Header() {
       <Link href="/" className={styles.logoLink} id={styles.test}>
         <h1 className={styles.logo} >Movies+</h1>
       </Link>
-      <NavList />
+      <div className={styles.navList}>
+        <NavList />
+      </div>
       <Link href="/search" className={`${styles.search} p-ripple`}>
         <Search />
         <Ripple />

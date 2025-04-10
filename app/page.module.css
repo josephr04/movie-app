@@ -1104,4 +1104,8 @@
   .carouselButton {
     visibility: hidden;
   }
+
+  .navList {
+    display: none;
+  }
 }
