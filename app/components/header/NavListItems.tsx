@@ -27,7 +27,6 @@ export function NavListItems({ nav, activeClass }: NavListItemsProps) {
 
   const handleClick = (e: React.MouseEvent) => {
     if (isMobile && nav.subItems) {
-      e.preventDefault();
       setShowSubMenu((prev) => !prev);
     }
   };
@@ -45,8 +44,9 @@ export function NavListItems({ nav, activeClass }: NavListItemsProps) {
           {nav.subItems.map((sub) => {
             const slug = slugify(sub.name, { lower: true });
             return (
-              <li key={sub.id} className={styles.subMenuItem}>
-                <Link href={`${slug}`}>{sub.name}</Link>
+              <li key={sub.id} className={`${styles.subMenuItem} p-ripple`}>
+                <Link href={`/categories/${slug}`}>{sub.name}</Link>
+                <Ripple />
               </li>
             )
           })}
