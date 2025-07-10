@@ -1079,6 +1079,78 @@
   }
 }
 
+:root {
+  --cx-header-height: 60px;
+}
+
+.menuIcon {
+  display: flex;
+  padding: 0 .8125rem;
+  align-items: center;
+  height: 100%;
+}
+
+.menuIconActive {
+  background-color: #141519;
+}
+
+.mobileMenuComponent {
+  display: none;
+}
+
+.mobileMenu {
+  position: fixed;
+  width: 250px;
+  height: calc(100% - var(--cx-header-height));  
+  background-color: #141519;
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+  opacity: 0;
+  z-index: 2;
+  inset-block-start: var(--cx-header-height);
+  transform: translateY(-20px);
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobileMenuClosed {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+.menuSection {
+  padding: .625rem 0;
+}
+
+.subMenu {
+  padding-left: 0rem;
+  background-color: #1e1f24;
+  max-height: 600px;
+  overflow-y: auto;
+  animation: slideDown 0.3s ease-in-out;
+}
+
+.subMenuItem {
+  padding: .875rem 2.375rem;
+  color: #fff;
+  list-style: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (max-width: 480px) {
   .carouselIndicators {
     bottom: 5% !important;
@@ -1101,11 +1173,94 @@
     transition: background-color 0.3s ease-in-out;
   }
 
+  .mobileMenuComponent {
+    display: block;
+  }
+
   .carouselButton {
     visibility: hidden;
   }
 
   .navList {
+    flex-direction: column;
+    padding-left: 0;
+  }
+
+  .navListItems {
+    justify-content: flex-start;
+    padding: .75rem 1.125rem;
+    text-transform: capitalize;
+    font-size: 1rem;
+  }
+
+  .navListDesk {
     display: none;
+  }
+
+  .logo {
+    font-size: 30px;
+  }
+
+  .logoLink {
+    margin-left: 15px;
+  }
+
+  .movieHeader {
+    padding: 50px 20px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .movieDetails {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .movieSubDetails {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .videoContainer {
+    width: 362px;
+    height: 203px;
+  }
+
+  .genresContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .moviePageInfo {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .moviePageInfo p {
+    text-align: justify;
+    padding: 0 10px;
+  }
+
+  .movieHeader {
+    margin-top: 60px;
+  }
+
+  .moviePoster {
+    width: 200px;
+  }
+
+  .movieRating {
+    justify-content: center;
+  }
+
+  .searchLoading {
+    z-index: 900;
+  }
+
+  .movieList {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
