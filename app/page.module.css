@@ -1074,10 +1074,6 @@
   }
 }
 
-:root {
-  --cx-header-height: 60px;
-}
-
 .menuIcon {
   display: flex;
   padding: 0 .8125rem;

@@ -47,3 +47,7 @@ a {
   width: 50px !important;
   transition: width 0.3s ease;
 }
+
+:root {
+  --cx-header-height: 60px;
+}
