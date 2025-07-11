@@ -42,3 +42,8 @@ a {
     color-scheme: dark;
   }
 }
+
+.carousel-indicators button.active {
+  width: 50px !important;
+  transition: width 0.3s ease;
+}

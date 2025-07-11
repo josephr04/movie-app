@@ -216,11 +216,6 @@
   border-radius: .25rem;
 }
 
-:global(.carousel-indicators button.active) {
-  width: 50px !important;
-  transition: width .3s ease;
-}
-
 .movieInfo {
   width: 30% !important;
   min-width: 200px !important;
