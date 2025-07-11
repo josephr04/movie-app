@@ -9,21 +9,6 @@ export function MobileMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const options = [
-    {
-      name: 'Home',
-      section: '#home-section'
-    },
-    {
-      name: 'Albums',
-      section: '#album-section'
-    },
-    {
-      name: 'Artists',
-      section: '#artist-section',
-    }
-  ];
-
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
