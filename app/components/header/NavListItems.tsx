@@ -25,7 +25,7 @@ export function NavListItems({ nav, activeClass }: NavListItemsProps) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (_e: React.MouseEvent) => {
     if (isMobile && nav.subItems) {
       setShowSubMenu((prev) => !prev);
     }
