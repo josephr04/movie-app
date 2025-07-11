@@ -5,6 +5,12 @@ import { Banner } from '@components/home/banner';
 import { notFound } from 'next/navigation';
 import styles from '@styles/page.module.css';
 
+interface PageProps {
+  params: {
+    slug: string;
+  };
+}
+
 interface Genre {
   id: number;
   name: string;
@@ -28,11 +34,14 @@ async function getGenres(): Promise<Genre[]> {
   return (await res.json()).genres as Genre[];
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await props.params;
+  const { slug } = resolvedParams;
+
   const genres = await getGenres();
 
   const matchedGenre = genres.find(
-    (genre: Genre) => slugify(genre.name, { lower: true }) === params.slug
+    (genre: Genre) => slugify(genre.name, { lower: true }) === slug
   );
 
   if (!matchedGenre) {
