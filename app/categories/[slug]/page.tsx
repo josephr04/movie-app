@@ -5,12 +5,6 @@ import { Banner } from '@components/home/banner';
 import { notFound } from 'next/navigation';
 import styles from '@styles/page.module.css';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
 interface Genre {
   id: number;
   name: string;
