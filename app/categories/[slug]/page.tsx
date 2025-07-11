@@ -5,12 +5,6 @@ import { Banner } from '@components/home/banner';
 import { notFound } from 'next/navigation';
 import styles from '@styles/page.module.css';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
-
 interface Genre {
   id: number;
   name: string;
@@ -34,7 +28,7 @@ async function getGenres(): Promise<Genre[]> {
   return (await res.json()).genres as Genre[];
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const genres = await getGenres();
 
   const matchedGenre = genres.find(
