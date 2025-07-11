@@ -6,13 +6,6 @@ import { MovieBanner } from '@components/movies/MovieBanner';
 import { MovieTrailer } from '@components/movies/MovieTrailer';
 import styles from '@styles/page.module.css';
 
-interface PageProps {
-  params : {
-    id: string;
-    slug?: string;
-  };
-}
-
 async function getMovieData(slug: string) {
   const url = `https://api.themoviedb.org/3/movie/${slug}?language=en-US`;
   const options = {
@@ -70,8 +63,9 @@ async function getMovieReviews(movieId: string) {
   return res.json();
 }
 
-export default async function page({ params }: PageProps) {
+export default async function page({ params }: { params: Promise<{ id: string; slug?: string }> }) {
   const { id } = await params;
+
   const [movie, videos, reviews] = await Promise.all([
     getMovieData(id),
     getMovieVideo(id),
