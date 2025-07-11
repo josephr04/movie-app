@@ -54,7 +54,7 @@ async function getMoviesByGenre(genreId: number): Promise<Movie[]> {
 
 export default async function page() {
   let genres = null;
-  let genreImages: { [key: number]: string } = {};
+  const genreImages: { [key: number]: string } = {};
 
   try {
     genres = await getGenres();
