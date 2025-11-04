@@ -54,7 +54,7 @@ export function ReviewItem({ review }: { review: Review }) {
       </div>
 
       {/* Modal */}
-      {mounted && createPortal(
+      {mounted && typeof document !== "undefined" && createPortal(
         <div className={`${styles.modalBackdrop} ${isOpen ? styles.active : ""}`} onClick={() => setIsOpen(false)}>
           <div className={`${styles.modalCard} ${isOpen ? styles.active : ""}`} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalUserProfile}>
