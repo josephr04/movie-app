@@ -6,15 +6,10 @@ import { PrimeReactProvider } from 'primereact/api';
 import Header from '@components/header/Header';
 import { Footer } from '@components/Footer';
 import { BackToTop } from '@components/BackToTop';
-import dynamic from 'next/dynamic';
 import styles from './page.module.css';
 import './globals.css';
 import { Suspense } from 'react';
 
-const DynamicBootstrapClient = dynamic(() => import('@components/BootstrapClient'), {
-    ssr: false,
-    loading: () => null
-});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -47,7 +42,6 @@ export default function RootLayout({
             <Footer />
           </Suspense>
         </PrimeReactProvider>
-        <DynamicBootstrapClient />
       </body>
     </html>
   );
